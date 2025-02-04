@@ -1,0 +1,212 @@
+*{
+    padding: 0;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card{
+    width: 350px;
+    height: 650px;
+    background: linear-gradient(to right, rgb(32, 0, 27), rgb(30, 0, 72));
+    border-radius: 15px;
+ }
+.flex-for-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: inherit;
+    height: 500px;
+}
+.img{
+    width: 250px;
+    height: 400px;
+    background-repeat: no-repeat;
+
+
+    background-image: url(https://i.pinimg.com/originals/b8/44/3e/b8443ec9de606744668297e4d6c1af72.png);
+    background-size: cover;
+    background-position: center;
+}
+.flex-for-select-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: inherit;
+    height: 100px; 
+}
+.flex-for-select-block select{
+    width: 160px;
+    height: 50px;
+    background: linear-gradient(to right, rgb(255, 69, 69), rgb(53, 97, 255));
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    position: relative;
+    top: 420px;
+}
+
+/* Мы обращаемся к картине (div class="img") в котором находится Pepsi который должен измениться на Cola и ставим (псевдокласс) условия has() внутри которого мы говорим о том что если option будет выбран то есть checked то при этом картина менялась на Cola */
+
+.img:has(option[value="Colamode"]:checked){
+    background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400/b0998a26210243.563531caac4f7.png );
+}
+
+/* Примечание: если мы используем этот псевдокласс has() чтобы поменять картину то она работает только для background-image для тегов img оно не будет работать так как этот псевдокласс взаимодействует только с свойствами CSS поэтому с помощью его можно изменять задний фон чего-то 
+
+Этот псевдокласс работает только для родительского элемента то есть чтобы изменить родительский элемент нам нужно взаимодействовать с дочерним элементом то есть элементом который должен находить внутри него */
+
+/* ________________________________________________________________________________________________________________________________________ */
+
+/*________________________________________________________hover-effect_______________________________________________________________ */
+
+.hidden{
+    opacity: 0;
+    pointer-events: none; /* Чтобы кнопка не была кликабельной, пока её не видно */
+    transition: opacity 0.3s;
+}
+.hover-effect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: inherit;
+    height: 100%; 
+}
+.box p{
+    font-size: 35px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    text-transform: capitalize;
+    color: white;
+}
+.box button{
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    text-transform: capitalize;
+    color: white;
+    background-color: rgb(255, 0, 0);
+    width: 200px;
+    height: 45px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 35px;
+}
+
+/* Тут можно выяснить то что если у элемента уже есть всегда класс то мы можем с ним тоже взаимодействовать как показано в этом примере у box есть псевдокласс hover к которому мы привязали has() Это говорит о том что при наведении курсора мыши по этому боксу чтобы у нас срабатывала has()  а внутри этого говорится о том что если у нас есть button то пускай к button применять те свойства которые мы дали */
+
+.box:hover:has(button) button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* __________________________________________________________________________________________________________________________________ */
+
+/* ________________________________________________________input-effect_______________________________________________________________ */
+
+.input-effect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: inherit;
+    height: 100%; 
+}
+
+.message {
+    opacity: 0;
+    transition: opacity 0.3s;
+    
+    color: white;
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    text-transform: capitalize;
+
+}
+.wrapper input{
+    width: 200px;
+    height: 30px;
+    text-align: center;
+    font-weight: 900;
+    font-family:sans-serif;
+}
+
+/* Тут показан на примере обращение псевдоэлемента has() к родительскому элементу внутри которого находится два других тегов и говорится то что если в родительском элементе поле для ввода текста сфокусирована (нажата) то классу message то есть тегу (<p>) будут даны указанные свойства*/
+.wrapper:has(input:focus) .message {
+    opacity: 1;
+}
+/* Таким образом мы выяснили то что псевдоэлемен has() не только всё можно изменять родительский элементу но и взаимодействовать с элементом который находится внутри родителя (дочерними элементами) */
+
+/* ________________________________________________________________________________________________________________________________________ */
+
+/* _________________________________________________________________________________________________________________________________________ */
+
+.transform-effect{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: inherit;
+    height: 100%; 
+}
+
+.popup {
+    transform: scale(0);
+    transition: transform 0.3s;
+
+    text-align: center;
+    margin-top: 15px;
+
+}
+.hover-box{
+    color: white;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+.hover-box:hover:has(.popup) .popup {
+    transform: scale(1);
+}
+
+/* _____________________________________________*/
+
+
+.r{
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    text-transform: capitalize;
+    margin-top: 30px;
+}
+.i{
+    width: 20px;
+    height: 20px;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+body:has(input[id="dakr-bg"]:checked){
+    background-color: rgb(53, 53, 53);
+    color: white;
+}
+body:has(input[id="normal-bg"]:checked){
+    background-color: rgb(0, 157, 255);
+    color: rgb(255, 0, 0);
+}
