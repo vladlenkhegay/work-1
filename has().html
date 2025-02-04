@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main{
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    .select-effect{
+        width: 400px;
+        height: 650px;
+        background: linear-gradient(to right, rgb(32, 0, 27), rgb(30, 0, 72));
+        border-radius: 15px;
+     }
+    .flex-for-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: inherit;
+        height: 500px;
+    }
+    .img{
+        width: 250px;
+        height: 400px;
+        background-repeat: no-repeat;
+
+
+        background-image: url(https://i.pinimg.com/originals/b8/44/3e/b8443ec9de606744668297e4d6c1af72.png);
+        background-size: cover;
+        background-position: center;
+    }
+    .flex-for-select-block{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: inherit;
+        height: 100px; 
+    }
+    .flex-for-select-block select{
+        width: 160px;
+        height: 50px;
+        background: linear-gradient(to right, rgb(255, 69, 69), rgb(53, 97, 255));
+        text-align: center;
+        text-transform: capitalize;
+        font-size: 18px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 900;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        position: relative;
+        top: 420px;
+    }
+    /* ________________________________________________________________________________________________________________________________________ */
+
+    /* Мы обращаемся к картине (div class="img") в котором находится Pepsi который должен измениться на Cola и ставим (псевдокласс) условия has() внутри которого мы говорим о том что если option будет выбран то есть checked то при этом картина менялась на Cola */
+
+    .img:has(option[value="Colamode"]:checked){
+        background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/1400/b0998a26210243.563531caac4f7.png );
+    }
+
+    /* Примечание: если мы используем этот псевдокласс has() чтобы поменять картину то она работает только для background-image для тегов img оно не будет работать так как этот псевдокласс взаимодействует только с свойствами CSS поэтому с помощью его можно изменять задний фон чего-то 
+
+    Этот псевдокласс работает только для родительского элемента то есть чтобы изменить родительский элемент нам нужно взаимодействовать с дочерним элементом то есть элементом который должен находить внутри него */
+
+    /* ________________________________________________________________________________________________________________________________________ */
+
+
+
+</style>
+<body>
+    <div class="main">
+        <div class="select-effect"> <!--Основная карточка на котором всё находится-->
+            <div class="flex-for-image"> <!--Блок который выравнивает картину по горизонтали по вертикали-->
+                <div class="img"> <!--Картина-->
+                    <div class="flex-for-select-block"> <!--Блок который выравнивает поле для выбора (пепси-кола)-->
+                        <select>
+                            <option style="color: black;" value="Pepsimode">Pepsi</option>
+                            <option style="color: black;" value="Colamode">Cola</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+
+        </div>
+
+    </div>
+</body>
+</html>
